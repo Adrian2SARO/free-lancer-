@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.slider {
+    height: 200px;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.slide-track {
+    display: flex;
+    width: auto; /* Ajusta el ancho automáticamente */
+    animation: scroll 80s linear infinite;
+    flex-wrap: nowrap; /* Evita que las imágenes se envuelvan en filas */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); /* Cambia -250px * 9 a -100% */
+    }
+}
+
+
+.slide-track:hover {
+    animation-play-state: paused;
+}
+
+
+
+.slide {
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+}
+
+img {
+    transition: transform 1s;
+  
+}
+
+
+.slider::before, 
+.slider::after {
+    background: linear-gradient(to right, rgba(255,255,255,1)) 0%, rgba(255,255,255,0) 100%;
+    content: '';
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    width: 15%;
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateY(180deg);
+}
+
+.icon-white {
+    filter: brightness(0) invert(1);
+}
+
